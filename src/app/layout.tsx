@@ -6,42 +6,42 @@ import Link from "next/link";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Book Tracker",
-  description: "Track your reading progress and manage your book collection",
+  title: "ReadBook",
+  description: "Track your reading progress",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en">
+    <html lang="ja">
       <body className={inter.className}>
         <nav className="bg-white shadow-md">
           <div className="container mx-auto px-4">
             <div className="flex justify-between items-center h-16">
               <Link href="/" className="text-xl font-bold text-gray-800">
-                Book Tracker
+                ReadBook
               </Link>
-              <div className="flex gap-4">
+              <div className="flex space-x-4">
                 <Link
                   href="/"
-                  className="text-gray-600 hover:text-gray-800"
+                  className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md"
                 >
-                  Books
+                  本棚
                 </Link>
                 <Link
-                  href="/books/new"
-                  className="text-gray-600 hover:text-gray-800"
+                  href="/statistics"
+                  className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md"
                 >
-                  Add Book
+                  統計
                 </Link>
               </div>
             </div>
           </div>
         </nav>
-        {children}
+        <main>{children}</main>
       </body>
     </html>
   );
