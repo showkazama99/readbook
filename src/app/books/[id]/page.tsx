@@ -97,7 +97,7 @@ export default function BookDetail() {
             )}
           </div>
           <div className="flex-grow">
-            <h1 className="text-3xl font-bold mb-4">{book.title}</h1>
+            <h1 className="text-3xl font-bold mb-4 text-gray-900">{book.title}</h1>
             <p className="text-xl text-gray-600 mb-6">{book.author}</p>
             
             <div className="mb-6">
