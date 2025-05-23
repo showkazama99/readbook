@@ -44,7 +44,7 @@ export default function BookDetail() {
   const updateCurrentPage = async () => {
     try {
       const response = await fetch(`/api/books/${params.id}`, {
-        method: 'PATCH',
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -134,7 +134,7 @@ export default function BookDetail() {
             <div className="mt-8">
               <h2 className="text-xl font-semibold mb-4">Comments</h2>
               <div className="space-y-4 mb-6">
-                {book.comments.map((comment) => (
+                {book.comments?.map((comment) => (
                   <div key={comment.id} className="bg-gray-50 p-4 rounded-lg">
                     <p className="text-gray-800">{comment.content}</p>
                     <p className="text-sm text-gray-500 mt-2">

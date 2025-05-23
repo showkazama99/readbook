@@ -29,15 +29,22 @@ export async function GET(request: Request) {
           gte: startDate,
         },
       },
-      include: {
-        book: true,
-      },
+      select: {
+        bookId: true,
+        currentPage: true,
+        updatedAt: true,
+        book: {
+          select: {
+            title: true
+          }
+        }
+      } as const,
       orderBy: {
         updatedAt: 'desc',
       },
     });
 
-    const stats = readingProgress.map((progress) => ({
+    const stats = readingProgress.map((progress: { bookId: number; currentPage: number; updatedAt: Date; book: { title: string } }) => ({
       bookId: progress.bookId,
       title: progress.book.title,
       pagesRead: progress.currentPage,

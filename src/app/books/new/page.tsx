@@ -33,10 +33,13 @@ export default function NewBook() {
       if (response.ok) {
         router.push('/');
       } else {
-        console.error('Failed to create book');
+        const errorData = await response.json();
+        console.error('Failed to create book:', errorData.error);
+        alert(errorData.error || 'Failed to create book');
       }
     } catch (error) {
       console.error('Error creating book:', error);
+      alert('Error creating book. Please try again.');
     } finally {
       setLoading(false);
     }
